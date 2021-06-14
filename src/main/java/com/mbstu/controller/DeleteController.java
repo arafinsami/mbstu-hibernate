@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mbstu.entity.Student;
 import com.mbstu.service.StudentService;
-import com.mbstu.serviceimpl.StudentServiceImpl;
+import com.mbstu.utils.ApplicationBeans;
 
 @WebServlet("/delete")
 public class DeleteController extends HttpServlet {
@@ -24,7 +24,7 @@ public class DeleteController extends HttpServlet {
 	}
 
 	public void init() {
-		this.service = new StudentServiceImpl();
+		this.service = (StudentService) ApplicationBeans.getBeans("service");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

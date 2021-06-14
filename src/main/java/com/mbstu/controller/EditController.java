@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mbstu.entity.Student;
 import com.mbstu.helper.StudentHelper;
 import com.mbstu.service.StudentService;
-import com.mbstu.serviceimpl.StudentServiceImpl;
+import com.mbstu.utils.ApplicationBeans;
 
 @WebServlet("/edit")
 public class EditController extends HttpServlet {
@@ -28,8 +28,8 @@ public class EditController extends HttpServlet {
 	}
 
 	public void init() {
-		this.service = new StudentServiceImpl();
-		this.helper = new StudentHelper();
+		this.service = (StudentService) ApplicationBeans.getBeans("service");
+		this.helper = (StudentHelper) ApplicationBeans.getBeans("helper");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

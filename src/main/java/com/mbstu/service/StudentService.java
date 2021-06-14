@@ -2,17 +2,39 @@ package com.mbstu.service;
 
 import java.util.List;
 
+import com.mbstu.dao.StudentDao;
 import com.mbstu.entity.Student;
 
-public interface StudentService {
+public class StudentService {
 
-	public void save(Student student);
+	private StudentDao dao;
 
-	public void update(Student student);
+	public StudentDao getDao() {
+		return dao;
+	}
 
-	public Student findById(int id);
+	public void setDao(StudentDao dao) {
+		this.dao = dao;
+	}
 
-	public void delete(Student student);
+	public void save(Student student) {
+		this.dao.save(student);
+	}
 
-	public List<Student> getAll();
+	public void update(Student student) {
+		this.dao.update(student);
+	}
+
+	public Student findById(int id) {
+		return this.dao.findById(id);
+	}
+
+	public void delete(Student student) {
+		this.dao.delete(student);
+	}
+
+	public List<Student> getAll() {
+		return this.dao.getAll();
+	}
+
 }

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mbstu.entity.Student;
 import com.mbstu.helper.StudentHelper;
 import com.mbstu.service.StudentService;
-import com.mbstu.serviceimpl.StudentServiceImpl;
+import com.mbstu.utils.ApplicationBeans;
 
 @WebServlet("/save")
 public class SaveController extends HttpServlet {
@@ -20,7 +20,7 @@ public class SaveController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private StudentService service;
-	
+
 	private StudentHelper helper;
 
 	public SaveController() {
@@ -28,8 +28,8 @@ public class SaveController extends HttpServlet {
 	}
 
 	public void init() {
-		this.service = new StudentServiceImpl();
-		this.helper = new StudentHelper();
+		this.service = (StudentService) ApplicationBeans.getBeans("service");
+		this.helper = (StudentHelper) ApplicationBeans.getBeans("helper");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
